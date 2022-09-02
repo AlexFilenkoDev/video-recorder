@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import CONSTANTS from './constants'
 import styled from "styled-components";
 
 import VideoOverlay from "./components/VideoOverlay";
@@ -22,15 +23,6 @@ const VideoWrapper = styled.div`
   position: relative;
 `;
 
-const VIDEO_CONSTRAIN = {
-  audio: true,
-  video: { width: 1280, height: 720 }
-}
-
-const MEDIA_RECORDER_OPTIONS = {
-  mimeType: "video/webm;codecs=vp8,opus"
-};
-
 function App() {
   const [isRecording, setIsRecording] = useState(false)
   const [isVideoRecorded, setIsVideoRecorded] = useState(false)
@@ -42,7 +34,7 @@ function App() {
   const videoRecorder = useRef(null)
 
   const initMediaDevices = useRef(async () => {
-    videoStream.current = await navigator.mediaDevices.getUserMedia(VIDEO_CONSTRAIN)
+    videoStream.current = await navigator.mediaDevices.getUserMedia(CONSTANTS.VIDEO_CONSTRAIN)
     const stream = videoStream.current
 
     const video = videoRef.current
@@ -61,7 +53,7 @@ function App() {
       setIsOverlayVisible(true);
     };
 
-    const recorder = new MediaRecorder(stream, MEDIA_RECORDER_OPTIONS)
+    const recorder = new MediaRecorder(stream, CONSTANTS.MEDIA_RECORDER_OPTIONS)
     videoRecorder.current = recorder
     const blobs = []
 
