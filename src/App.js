@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import CONSTANTS from './constants'
+import CONSTANTS from './constants';
 import styled from "styled-components";
 
 import VideoOverlay from "./components/VideoOverlay";
