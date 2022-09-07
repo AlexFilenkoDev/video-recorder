@@ -21,6 +21,7 @@ const Video = styled.video`
 
 const VideoWrapper = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 function App() {
@@ -116,7 +117,7 @@ function App() {
   return (
     <ContentWrapper>
       <VideoWrapper>
-        <Video ref={setCameraRef.current} />
+        <Video width='100%' ref={setCameraRef.current} />
 
         {isOverlayVisible &&
           <VideoOverlay
